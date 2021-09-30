@@ -1,0 +1,8 @@
+drv <- dbDriver('PostgreSQL');
+con <- dbConnect(drv,host='localhost',dbname='joseh',user='joseh',password='dssg_2021')
+
+createEmptyTable <- function(con,tn,df) {
+    sql <- paste0("create table \"",tn,"\" (",paste0(collapse=',','"',names(df),'" ',sapply(df[0,],postgresqlDataType)),");");
+    dbSendQuery(con,sql);
+    invisible();
+}
