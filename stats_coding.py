@@ -86,3 +86,42 @@ def mode(array):
 
 mode(ar)
 
+# Weighted mean 
+X = [10, 40, 30, 50, 20]  
+W = [1, 2, 3, 4, 5]
+
+W_X_product = [a*b for a,b in zip(X,W)] 
+
+sum(W_X_product)/sum(W)
+
+def weightedMean(X, W):
+    W_X_product = [a*b for a,b in zip(X,W)]
+    w_mean = round(sum(W_X_product)/sum(W), 1)
+    return w_mean 
+
+weightedMean(X,W)
+
+X = [10, 40, 30, 50, 20, 10, 40, 30, 50, 20] 
+W = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+weightedMean(X, W)
+
+# standard deviation 
+import math
+X = [10, 40, 30, 50, 20, 10, 40, 30, 50, 20] 
+n = len(X)
+
+def stdDev(X, n):
+    mean = sum(X)/n
+    rss = sum([(a-mean)**2 for a in X])
+    variance = rss/n
+    standard_deviation = round(math.sqrt(variance), 1)
+    return print(standard_deviation)
+
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    vals = list(map(int, input().rstrip().split()))
+
+    stdDev(X = vals, n=n)
