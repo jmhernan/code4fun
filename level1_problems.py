@@ -59,10 +59,58 @@ zeros = [0]*test.count(0)
 # remove zeros from original and append 
 non_zero = [i for i in test if i != 0]
 new_list = zeros + non_zero
-len(new_list) == len(test)
+assert len(new_list) == len(test)
 
+# Given an array of integers nums and an integer target, 
+# return indices of the two numbers such that they add up to target.
+nums = [2, 7, 11, 15]
+target = 9
 
+nums = [0,2,3,1,3]
+target = 6
+# works for adjacent numbers 
+for i in range(len(nums)-1):
+    test = nums[i] + nums[i+1] 
+    if test == target:
+        print(i, i+1)
+    else:
+        i += 1 
 
+# THIS WORKS BUT YOU NEED TO REVISIT!!!
+for i in range(len(nums)):
+    for j in range(i+1,len(nums)):
+        test = nums[i] + nums[j]
+        if test == target:
+            print(i, j)
+        elif j <= len(nums):
+            j =+ 1
+    else:
+        i += 1
 
+# Longest substring 
+# 1. hash to count all occurences 
+# create a sublist of everything that is 1 
 
+def len_substr(s):
+    counter_dict = {}
+    for item in s:
+            if (item in counter_dict): 
+                counter_dict[item] += 1
+            else:
+                counter_dict[item] = 1
+    if len(counter_dict) == 0:
+        return len(counter_dict)
+    if counter_dict[s[0]] != 1:
+        return len(counter_dict)
+    else: 
+        return  len(counter_dict)-1    
+
+s = 'abcabcbb'
+len_substr(s)
+s = "bbbbb"
+len_substr(s)
+s = "pwwkew"
+len_substr(s)
+s = " "
+len_substr(s)
 
